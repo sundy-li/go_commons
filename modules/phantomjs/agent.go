@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"syscall"
 
-	"go_commons/log"
+	"github.com/wswz/go_commons/log"
 )
 
 type Monitor interface {

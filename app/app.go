@@ -5,7 +5,7 @@ import (
 	"log"
 	"runtime"
 
-	"go_commons/utils"
+	"github.com/wswz/go_commons/utils"
 )
 
 var CPU_NUM int

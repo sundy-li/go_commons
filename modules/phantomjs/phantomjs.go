@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"go_commons/log"
+	"github.com/wswz/go_commons/log"
 )
 
 type PhantomJS struct {

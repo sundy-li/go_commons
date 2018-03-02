@@ -3,8 +3,8 @@ package mq
 import (
 	"sync"
 
-	"go_commons/conf"
-	"go_commons/libs/mq"
+	"github.com/wswz/go_commons/conf"
+	"github.com/wswz/go_commons/libs/mq"
 )
 
 var (

@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"go_commons/libs/assert"
+	"github.com/wswz/go_commons/libs/assert"
 )
 
 func TestUintSet(t *testing.T) {

@@ -3,8 +3,8 @@ package mdb
 import (
 	"sync"
 
-	"go_commons/conf"
-	"go_commons/libs/mdb"
+	"github.com/wswz/go_commons/conf"
+	"github.com/wswz/go_commons/libs/mdb"
 )
 
 var (

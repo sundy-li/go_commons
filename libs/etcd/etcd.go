@@ -7,7 +7,7 @@ import (
 
 	"github.com/coreos/etcd/clientv3"
 
-	"go_commons/conf"
+	"github.com/wswz/go_commons/conf"
 )
 
 type EtcdDb struct {

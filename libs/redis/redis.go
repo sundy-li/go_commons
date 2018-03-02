@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"go_commons/conf"
+	"github.com/wswz/go_commons/conf"
 
 	"gopkg.in/redis.v5"
 )

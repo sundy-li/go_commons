@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"go_commons/log"
-	"go_commons/utils"
+	"github.com/wswz/go_commons/log"
+	"github.com/wswz/go_commons/utils"
 
 	"github.com/coreos/etcd/clientv3"
 )

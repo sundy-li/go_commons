@@ -2,7 +2,7 @@ package etcd
 
 import (
 	"testing"
-	"go_commons/conf"
+	"github.com/wswz/go_commons/conf"
 	"fmt"
 	"time"
 	"sync"

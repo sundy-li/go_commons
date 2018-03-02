@@ -20,7 +20,7 @@ import (
 	_ "golang.org/x/image/vp8l"
 	_ "golang.org/x/image/webp"
 
-	"go_commons/log"
+	"github.com/wswz/go_commons/log"
 )
 
 const (
