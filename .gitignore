@@ -1,0 +1,8 @@
+.DS_Store
+vendor
+*.log
+*.sh 
+.vendor
+.idea
+node_modules
+package.json
