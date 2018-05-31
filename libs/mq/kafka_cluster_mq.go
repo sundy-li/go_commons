@@ -55,7 +55,7 @@ func (k *KafkaClusterMQ) NewClusterConsumer(groupId string, topics []string) (c 
 }
 
 func (c *ClusterConsumer) Receive() chan *sarama.ConsumerMessage {
-	buf := make(chan *sarama.ConsumerMessage, 1)
+	buf := make(chan *sarama.ConsumerMessage, 10000)
 
 	go func(buf chan<- *sarama.ConsumerMessage, consumer *cluster.Consumer) {
 		for {

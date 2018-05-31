@@ -296,7 +296,7 @@ func (bl *BeeLogger) SetLevel(l int) {
 }
 
 func (bl *BeeLogger) SetLevelStr(str string) {
-	l := levelMap[str]
+	l := levelMap[strings.ToLower(str)]
 	bl.SetLevel(l)
 }
 

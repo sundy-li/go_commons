@@ -11,7 +11,7 @@ import (
 var CPU_NUM int
 
 func init() {
-	flag.IntVar(&CPU_NUM, "cpunum", 1, "指定cpu数量，默认一个cpu")
+	flag.IntVar(&CPU_NUM, "cpunum", 1, "Indicate the number of CPU")
 }
 
 func ParseFlag() {
@@ -22,26 +22,26 @@ func ParseFlag() {
 }
 
 func Run(appName string, initFunc, jobFunc, cleanupFunc func() error) {
-	log.Printf("初始化 [%s]", appName)
+	log.Printf("Initial [%s]", appName)
 	if err := initFunc(); err != nil {
-		log.Printf("初始化 [%s] 失败：[%s]", appName, err)
+		log.Printf("Initial [%s] failure: [%s]", appName, err)
 		panic(err)
 	}
-	log.Printf("初始化 [%s] 完成", appName)
+	log.Printf("Initial [%s] complete", appName)
 	go func() {
 		if err := jobFunc(); err != nil {
-			log.Printf("[%s] 运行出错：[%v]", appName, err)
+			log.Printf("[%s] run error: [%v]", appName, err)
 			panic(err)
 		}
 	}()
 
 	utils.WaitForExitSign()
-	log.Printf("[%s] 监听到退出信息，开始清理", appName)
+	log.Printf("[%s] watched the exit signal, start to clean", appName)
 	if err := cleanupFunc(); err != nil {
-		log.Printf("[%s] 清理失败：[%v]", appName, err)
+		log.Printf("[%s] clean failed: [%v]", appName, err)
 		panic(err)
 	}
-	log.Printf("[%s] 清理完成，成功退出", appName)
+	log.Printf("[%s] clean complete, exited", appName)
 }
 
 func Funcs(funcs ...func() error) func() error {
@@ -56,12 +56,12 @@ func Funcs(funcs ...func() error) func() error {
 }
 func LogWrapper(msg string, fun func() error) func() error {
 	return func() error {
-		log.Println(msg + " 开始")
+		log.Println(msg + " start")
 		if err := fun(); err != nil {
-			log.Printf("%s 失败:%v", msg, err)
+			log.Printf("%s failed: %v", msg, err)
 			return err
 		}
-		log.Println(msg + " 完成")
+		log.Println(msg + " success")
 		return nil
 	}
 }

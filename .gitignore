@@ -2,6 +2,7 @@
 vendor
 *.log
 *.sh 
+tmp
 .vendor
 .idea
 node_modules
