@@ -159,7 +159,8 @@ func (w *fileLogWriter) createLogFile() (*os.File, error) {
 		return nil, err
 	}
 	dir := filepath.Dir(w.Filename)
-	os.MkdirAll(dir, 0744)
+
+	os.MkdirAll(dir, 0755)
 
 	fd, err := os.OpenFile(w.Filename, os.O_WRONLY|os.O_APPEND|os.O_CREATE, os.FileMode(perm))
 	if err == nil {
