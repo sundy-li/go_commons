@@ -646,7 +646,7 @@ func Debug(f interface{}, v ...interface{}) {
 }
 
 // Just to compatibal with std log
-func Printf(f interface{}, v ...interface{}) {
+func Print(f interface{}, v ...interface{}) {
 	beeLogger.Debug(getMsgs(f, v...))
 }
 
@@ -685,6 +685,11 @@ func Infof(f interface{}, v ...interface{}) {
 }
 
 func Debugf(f interface{}, v ...interface{}) {
+	beeLogger.Debug(formatLogs(f, v...))
+}
+
+// Just to compatibal with std log
+func Printf(f interface{}, v ...interface{}) {
 	beeLogger.Debug(formatLogs(f, v...))
 }
 
