@@ -13,4 +13,6 @@ func TestLog(t *testing.T) {
 	SetOrReplaceLogger("console", `{"color" : false}`)
 	Info("critical  fdsaf", "33")
 	Infof("critical %s fdsaf", "33")
+
+	Print("aa")
 }
