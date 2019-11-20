@@ -4,7 +4,7 @@ import (
 	"os/exec"
 	"time"
 
-	"github.com/wswz/go_commons/log"
+	"github.com/sundy-li/go_commons/log"
 )
 
 // pptp util

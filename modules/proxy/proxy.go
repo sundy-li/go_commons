@@ -11,7 +11,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/wswz/go_commons/log"
+	"github.com/sundy-li/go_commons/log"
 )
 
 type Proxy struct {

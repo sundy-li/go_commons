@@ -181,7 +181,7 @@ func curFile(addLevel int) string {
 		var filename string
 		for i := 0; i < 20; i++ {
 			_, filename, _, _ = runtime.Caller(i)
-			if strings.HasSuffix(filename, "github.com/wswz/go_commons/utils/util.go") {
+			if strings.HasSuffix(filename, "github.com/sundy-li/go_commons/utils/util.go") {
 				_level = i + 1
 				break
 			}

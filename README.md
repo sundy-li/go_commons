@@ -2,4 +2,4 @@
 
 
 #### install 
-go get -u github.com/wswz/go_commons
+go get -u github.com/sundy-li/go_commons

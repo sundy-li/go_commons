@@ -191,6 +191,35 @@ func (bl *BeeLogger) setLogger(adapterName string, configs ...string) error {
 	return nil
 }
 
+func (bl *BeeLogger) setOrReplaceLogger(adapterName string, configs ...string) error {
+	config := append(configs, "{}")[0]
+
+	var idx int = -1
+	for i, l := range bl.outputs {
+		if l.name == adapterName {
+			idx = i
+		}
+	}
+
+	if idx != -1 {
+		bl.outputs = append(bl.outputs[:idx], bl.outputs[idx+1:]...)
+	}
+
+	log, ok := adapters[adapterName]
+	if !ok {
+		return fmt.Errorf("logs: unknown adaptername %q (forgotten Register?)", adapterName)
+	}
+
+	lg := log()
+	err := lg.Init(config)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "logs.BeeLogger.SetLogger: "+err.Error())
+		return err
+	}
+	bl.outputs = append(bl.outputs, &nameLogger{name: adapterName, Logger: lg})
+	return nil
+}
+
 // SetLogger provides a given logger adapter into BeeLogger with config string.
 // config need to be correct JSON as string: {"interval":360}.
 func (bl *BeeLogger) SetLogger(adapterName string, configs ...string) error {
@@ -201,6 +230,16 @@ func (bl *BeeLogger) SetLogger(adapterName string, configs ...string) error {
 		bl.init = true
 	}
 	return bl.setLogger(adapterName, configs...)
+}
+
+func (bl *BeeLogger) SetOrReplaceLogger(adapterName string, configs ...string) error {
+	bl.lock.Lock()
+	defer bl.lock.Unlock()
+	if !bl.init {
+		bl.outputs = []*nameLogger{}
+		bl.init = true
+	}
+	return bl.setOrReplaceLogger(adapterName, configs...)
 }
 
 // DelLogger remove a logger adapter in BeeLogger.
@@ -298,6 +337,12 @@ func (bl *BeeLogger) SetLevel(l int) {
 func (bl *BeeLogger) SetLevelStr(str string) {
 	l := levelMap[strings.ToLower(str)]
 	bl.SetLevel(l)
+}
+
+func (bl *BeeLogger) Init(config string) {
+	for _, output := range bl.outputs {
+		output.Init(config)
+	}
 }
 
 // SetLogFuncCallDepth set log funcCallDepth
@@ -544,6 +589,15 @@ func SetLogFuncCallDepth(d int) {
 
 // SetLogger sets a new logger.
 func SetLogger(adapter string, config ...string) error {
+	err := beeLogger.SetLogger(adapter, config...)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+// SetLogger sets or repalces a new logger.
+func SetOrReplaceLogger(adapter string, config ...string) error {
 	err := beeLogger.SetLogger(adapter, config...)
 	if err != nil {
 		return err

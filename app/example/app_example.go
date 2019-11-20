@@ -6,7 +6,7 @@ import (
 	// "syscall"
 	"time"
 
-	"github.com/wswz/go_commons/app"
+	"github.com/sundy-li/go_commons/app"
 )
 
 func main() {

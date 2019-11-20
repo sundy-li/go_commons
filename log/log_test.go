@@ -9,4 +9,8 @@ func TestLog(t *testing.T) {
 
 	beeLogger.EnableFuncCallDepth(true)
 	Critical("critical")
+
+	SetOrReplaceLogger("console", `{"color" : false}`)
+	Info("critical  fdsaf", "33")
+	Infof("critical %s fdsaf", "33")
 }
