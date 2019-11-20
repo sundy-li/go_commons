@@ -645,6 +645,11 @@ func Debug(f interface{}, v ...interface{}) {
 	beeLogger.Debug(getMsgs(f, v...))
 }
 
+// Just to compatibal with std log
+func Printf(f interface{}, v ...interface{}) {
+	beeLogger.Debug(getMsgs(f, v...))
+}
+
 // Trace logs a message at trace level.
 // compatibility alias for Warning()
 func Trace(f interface{}, v ...interface{}) {
