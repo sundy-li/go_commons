@@ -304,7 +304,7 @@ func (bl *BeeLogger) writeMsg(logLevel int, msg string, v ...interface{}) error 
 			line = 0
 		}
 		_, filename := path.Split(file)
-		msg = "[" + filename + ":" + strconv.FormatInt(int64(line), 10) + "] " + msg
+		msg = "[" + filename + ":" + strconv.FormatInt(int64(line), 10) + "]\t" + msg
 	}
 
 	//set level info in front of filename info
