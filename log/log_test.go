@@ -14,5 +14,5 @@ func TestLog(t *testing.T) {
 	Info("critical  fdsaf", "33")
 	Infof("critical %s fdsaf", "33")
 
-	Print("aa")
+	Printf("aaf %s fdsfdsf", "ffdsf")
 }

@@ -576,6 +576,10 @@ func EnableFuncCallDepth(b bool) {
 	beeLogger.enableFuncCallDepth = b
 }
 
+func Init(config string) {
+	beeLogger.Init(config)
+}
+
 // SetLogFuncCall set the CallDepth, default is 4
 func SetLogFuncCall(b bool) {
 	beeLogger.EnableFuncCallDepth(b)
