@@ -340,6 +340,11 @@ func (bl *BeeLogger) SetLevelStr(str string) {
 }
 
 func (bl *BeeLogger) Init(config string) {
+	if !bl.init {
+		bl.lock.Lock()
+		bl.setLogger(AdapterConsole)
+		bl.lock.Unlock()
+	}
 	for _, output := range bl.outputs {
 		output.Init(config)
 	}
@@ -576,6 +581,7 @@ func EnableFuncCallDepth(b bool) {
 	beeLogger.enableFuncCallDepth = b
 }
 
+// Init default logger by config
 func Init(config string) {
 	beeLogger.Init(config)
 }
